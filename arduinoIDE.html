@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta content="John Olinda" name="author">
+    <title>Arduino IDE</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta content="Students will install the Arduino IDE and learn how
+      to use it." name="description">
+  </head>
+  <body>
+    <h1>Arduino IDE<br>
+    </h1>
+    <p>In this unit we will be programming Arduino Uno devices using the
+      Arduino IDE. IDE stands for Integrated Development Environment.
+      Although you can program these devices using other tools, we will
+      use the official tool. Once you've mastered it, you are welcome to
+      use other tools that you might prefer.<br>
+    </p>
+    <ul id="mozToc">
+      <!--mozToc h2 1 h3 2 h4 3 h5 4 h6 5-->
+      <li><a href="#mozTocId635864">Checkpoint 1: Download and Install
+          the Arduino IDE</a></li>
+      <li><a href="#mozTocId32734">Checkpoint 2: Connect Your Arduino</a></li>
+      <li><a href="#mozTocId643261">Checkpoint 3: Edit Your Preferences</a></li>
+      <li><a href="#mozTocId91058">Checkpoint 4: Bare Minimum</a></li>
+      <li><a href="#mozTocId675089">Checkpoint 5: Git Remote</a></li>
+    </ul>
+    <h2><a class="mozTocH2" name="mozTocId635864"></a>Checkpoint 1:
+      Download and Install the Arduino IDE</h2>
+    <p><a href="https://downloads.arduino.cc/arduino-1.8.0-windows.exe">Download
+
+        Arduino IDE 1.8.0</a> and then install it. You will need an
+      administrator password to do so. You can use the default options.
+      Once you've installed it, open it. You should see something like
+      this:</p>
+    <div align="center"><img alt="The Arduino IDE" title="The Arduino
+        IDE" src="images/javaw_2016-12-27_10-40-05.png" height="685"
+        width="600"><br>
+      <div align="left">
+        <p>This is the basic skeleton for an Arduino program. As you can
+          see, there are two sections. The first is for code you only
+          want to run when the Arduino boots up. The second is for the
+          code you want to run as long as the Arduino is powered on.<br>
+        </p>
+      </div>
+    </div>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <h2><a class="mozTocH2" name="mozTocId32734"></a>Checkpoint 2:
+      Connect Your Arduino<br>
+    </h2>
+    <p>Go to the back of the classroom and get one USB A to USB B cable
+      and one Arduino Uno. Do not use any Arduinos that have a label on
+      them.</p>
+    <p>Once you have them, quit the Arduino IDE and connect the Arduino
+      Uno to your laptop using the cable. You should see a small green
+      LED blink several times when you plug it in, and you'll see an
+      orange LED as well.</p>
+    <p>Open the Arduino IDE and go to the Tools menu. Hover your mouse
+      over the Ports submenu and then choose the COM port that shows the
+      Arduino Uno attached to it.<br>
+    </p>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <h2><a class="mozTocH2" name="mozTocId643261"></a>Checkpoint 3: Edit
+      Your Preferences<br>
+    </h2>
+    <p>Open Git Bash and navigate to your projects folder. Then use <code>git
+
+        init</code> to create a repository called arduino.<br>
+    </p>
+    <p>Go to the File menu and open the editor preferences (you can also
+      get here by pressing Ctrl+Comma). First, change the default
+      location of your sketchbook to your new ~/projects/arduino folder.
+      Then enable code folding and line numbers.</p>
+    <div align="center"><img alt="The Arduino IDE preferences window"
+        title="The Arduino IDE preferences window"
+        src="images/javaw_2016-12-27_11-06-13.png" height="470"
+        width="600"></div>
+    <p>Once you've done this, press OK. Quit the Arduino IDE and reopen
+      it.<br>
+    </p>
+    <p></p>
+    <p></p>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <h2><a class="mozTocH2" name="mozTocId91058"></a>Checkpoint 4: Bare
+      Minimum<br>
+    </h2>
+    <p>You should have the empty program on your screen. Go ahead and
+      compile it by pressing the check symbol (or Ctrl+R) which will
+      make sure your program is free of errors. This doesn't mean your
+      program works, it just means that it doesn't have syntax errors.
+      You should get a message similar to the following (I compiled and
+      uploaded my program to a MEGA 2560, not an Uno) when it finishes
+      in the console at the bottom of the window:</p>
+    <p><samp>Sketch uses 656 bytes (0%) of program storage space.
+        Maximum is 253952 bytes.<br>
+        Global variables use 9 bytes (0%) of dynamic memory, leaving
+        8183 bytes for local variables. Maximum is 8192 bytes.</samp><samp></samp><br>
+    </p>
+    <p>This just tells you how much of the Arduino's storage your
+      program uses as well as how much memory it will use. Now, upload
+      it to your Arduino. The Arduino won't do anything since it's an
+      empty program, but you should get a simple message in the console
+      telling you what happened:</p>
+    <p><samp>Sketch uses 656 bytes (0%) of program storage space.
+        Maximum is 253952 bytes.</samp><samp><br>
+      </samp><samp>Global variables use 9 bytes (0%) of dynamic memory,
+        leaving 8183 bytes for local variables. Maximum is 8192 bytes.</samp><br>
+    </p>
+    <p>It's basically the same. However, if you have any errors, those
+      will also appear here. Go back to your settings and check the
+      boxes for compilation and upload after the phrase: "Show verbose
+      output during:" and repeat this checkpoint to see more detail
+      about what's going on in the background.<br>
+    </p>
+    <p>Finally, save your program as "bareMinimum" in your Arduino
+      project folder. Then <code>git add</code> and <code>git commit</code>.
+      Make sure your commit message follows the Seven Rules.<br>
+    </p>
+    <p></p>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <h2><a class="mozTocH2" name="mozTocId675089"></a>Checkpoint 5: Git
+      Remote<br>
+    </h2>
+    <p>Now you need to link your local Git repository to a remote
+      repository on GitHub. Go to GitHub and create a new repository
+      called "arduino". Make sure it is not capitalized.<br>
+    </p>
+    <div align="center"><img alt="Creating a new remote repository for
+        your Arduino sketchbook" title="Creating a new remote repository
+        for your Arduino sketchbook"
+        src="images/chrome_2016-12-27_11-14-18.png" height="477"
+        width="600"></div>
+    <p>Then add this new remote repository to your local repository so
+      that you can backup your work to GitHub. First, type the following
+      command, replacing "username" with your GitHub user name:<br>
+    </p>
+    <p><code>git remote add origin git@github.com:username/arduino.git</code></p>
+    <p>Then type:<br>
+    </p>
+    <p><code>git push -u origin master</code></p>
+    <p>You should get a confirmation message, but if you get an error,
+      be sure to read the instructions in the error message. You must
+      understand that Git repositories can exist locally and remotely,
+      and can be both at the same time. Almost all repositories in this
+      class will be both local and remote since it allows you to have a
+      backup of your work, but you can create a local repository which
+      exists only on your computer if you want.<br>
+    </p>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <p> </p>
+    <p> </p>
+  </body>
+</html>
