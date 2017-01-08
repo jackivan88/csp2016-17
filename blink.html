@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta content="John Olinda" name="author">
+    <title>Blink</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <h1>Blink<br>
+    </h1>
+    <p>One of the advantages of programming with the Arduino platform is
+      that you can often see immediate results from your code. We're
+      going to create a program that causes LEDs to blink, both on the
+      board itself and on a separate breadboard.<br>
+    </p>
+    <ul id="mozToc">
+      <!--mozToc h2 1 h3 2 h4 3 h5 4 h6 5-->
+      <li><a href="#mozTocId635864">Checkpoint 1: Connect Your Arduino</a></li>
+      <li><a href="#mozTocId32734">Checkpoint 2: Output Pin</a></li>
+      <li><a href="#mozTocId643261">Checkpoint 3: High and Low </a></li>
+      <li><a href="#mozTocId91058">Checkpoint 4: Timing </a></li>
+      <li><a href="#mozTocId675089">Checkpoint 5: Patterns </a></li>
+      <li><a href="#mozTocId372063">Checkpoint 6: Commenting Your Code</a></li>
+      <li><a href="#mozTocId651491">Checkpoint 8: Clean</a></li>
+      <li><a href="#mozTocId151306">Checkpoint 9: Write</a></li>
+    </ul>
+    <h2><a class="mozTocH2" name="mozTocId635864"></a>Checkpoint 1:
+      Connect Your Arduino<br>
+    </h2>
+    <p>Get an Arduino from the table at the back of the room and a USB-A
+      to USB-B cable. Connect it to your laptop and open the Arduino
+      IDE. If it does not automatically open an empty sketch (program)
+      then go to the <b>File</b> menu and select <b>New</b>. Make sure
+      you have the correct port selected.<br>
+    </p>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <h2><a class="mozTocH2" name="mozTocId32734"></a>Checkpoint 2:
+      Output Pin<br>
+    </h2>
+    <p>For the program to work, you need to designate one pin as an
+      output pin. The Arduino Uno has a built-in LED attached to pin 13,
+      which is what we will use for now. On line three of your empty
+      program, press <b>Tab</b> and type:</p>
+    <p><code>pinMode(13, OUTPUT);</code></p>
+    <p>This tells the board to set pin 13 to output. Go to the <b>Tools</b>
+      menu and choose <b>Auto Format</b>. Then verify your code to make
+      sure you haven't made any syntax errors. At this point your code
+      won't do anything, so do not upload it yet. Just save it as <i>blink</i>
+      in your <i>~/projects/</i><i>arduino</i> folder. Then add and
+      commit it to version control.<br>
+    </p>
+    <div align="center"><img alt="Set pin 13 to output" title="Set pin
+        13 to output" src="images/javaw_2017-01-08_18-45-49.png"
+        height="675" width="800"><br>
+      <div align="left">
+        <p>What other mode do you think you can set pins to?<br>
+        </p>
+      </div>
+    </div>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <h2><a class="mozTocH2" name="mozTocId643261"></a>Checkpoint 3: High
+      and Low<br>
+    </h2>
+    <p>Now let's add the code that will run continuously as long as your
+      Arduino is powered on. Go to line eight and press <b>Tab</b>.
+      Then type:</p>
+    <p><code>digitalWrite(13, HIGH);</code></p>
+    <p><code>delay(1000);</code></p>
+    <p><code>digitalWrite(13, LOW);</code></p>
+    <p><code>delay(1000);</code></p>
+    <p>Go to the <b>Tools</b> menu and choose <b>Auto Format</b>. Then
+      verify your code to make sure you haven't made any syntax errors.
+      Save it, and then add and commit it to version control. Then
+      upload it and see if the orange LED blinks on and off. If so,
+      you've entered the code correctly. If not, go back and check each
+      line.</p>
+    <img alt="" src="images/javaw_2017-01-08_19-05-40.png" height="763"
+      width="800">
+    <p>What part or parts of your code do you think turns on the light?
+      What part or parts turns it off? What part or parts control the
+      duration of the blink? What unit do you think is used to measure
+      time?<br>
+    </p>
+    <p></p>
+    <p></p>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <h2><a class="mozTocH2" name="mozTocId91058"></a>Checkpoint 4:
+      Timing<br>
+    </h2>
+    The way your program works right now, your LED is on for one second
+    and off for one second. Modify it so that it is on for one second
+    and off for two. The amount of time an LED is on during one cycle is
+    called the duty cycle. So a duty cycle of 50% means that the light
+    is on half the duration of a cycle. Try at least three other
+    combinations of timings. Be prepared to demonstrate changing the
+    timings for Mr. Olinda and express them both in seconds as well as
+    duty cycles. <br>
+    <p></p>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <h2><a class="mozTocH2" name="mozTocId675089"></a>Checkpoint 5:
+      Patterns<br>
+    </h2>
+    Now that you know how to adjust the timing of the lights, add extra
+    lines of code to turn the light on and off in different patterns.
+    You must create a pattern that uses at least four ON/OFF pairs, and
+    each pair must be different.<br>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <h2><a class="mozTocH2" name="mozTocId372063"></a>Checkpoint 6:
+      Commenting Your Code</h2>
+    <p>Go ahead and add comments on each line of code, explaining what
+      you think each line does. Comments are preceded by <code>//</code>
+      so that the compiler knows they're not supposed to be code. You
+      can add comments after code or on their own lines.<br>
+    </p>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <p>Checkpoint 7: External LED Setup</p>
+    <p>Now we are going to modify the program to turn an external LED on
+      and off. Go to the supply bin and get a breadboard, two wires, a
+      1K resistor (black, red, and gold stripes), and a red LED.
+      Breadboards are small, rectangular pieces of plastic with holes in
+      them where you can quickly add and remove wires and other parts to
+      try out different circuits. The wires will carry the current from
+      the board to the LED, and the resistor simply protects the LED
+      from overheating.<br>
+    </p>
+    <p>Then, unplug and set up your Arduino to match the diagram below.
+      Make sure you use exactly the same pins as the diagram. Notice
+      that one of the pins on the LED is longer. That pin is bent in the
+      diagram.<br>
+    </p>
+    <img alt="Checkpoint 7: External LED Setup" title="Checkpoint 7:
+      External LED Setup" src="images/External%20LED_blink.gif"
+      height="586" width="800"><br>
+    <p>If you plug your Arduino back in, you'll notice it does not do
+      anything new. Go ahead and edit your code to make the external LED
+      blink. Once it does, save your code, and add and commit it to
+      version control.<br>
+    </p>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <h2><a class="mozTocH2" name="mozTocId651491"></a>Checkpoint 8:
+      Clean</h2>
+    <p>Get a resealable bag from the back table and write your name on
+      it in permanent marker. Then place your Arduino, USB cable,
+      breadboard, wires, resistor, and LED inside and place the bag on
+      the back table.</p>
+    <p>Then push your finished code to your remote repository.</p>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <h2><a class="mozTocH2" name="mozTocId151306"></a>Checkpoint 9:
+      Write</h2>
+    <p>Write a short blog post summarizing what you accomplished today.
+      At the end, write some ideas that you would like to try with your
+      Arduino. Your post should be two paragraphs, three to five
+      sentences each.</p>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <p>
+    </p>
+    <p> </p>
+    <p> </p>
+  </body>
+</html>
