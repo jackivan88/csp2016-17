@@ -32,10 +32,12 @@
       <li><a href="#mozTocId574868">Checkpoint 7: if / else</a></li>
       <li><a href="#mozTocId651491">Checkpoint 8: Feedback
         </a></li>
-      <li><a href="#mozTocId151306">Checkpoint 9: Comment Your Code</a></li>
-      <li><a href="#mozTocId941739">Checkpoint 10: Clean
+      <li><a href="#mozTocId397125">Checkpoint 9: Nested Blocks
         </a></li>
-      <li><a href="#mozTocId151306">Checkpoint 11: Write</a></li>
+      <li><a href="#mozTocId151306">Checkpoint 10: Comment Your Code</a></li>
+      <li><a href="#mozTocId941739">Checkpoint 11: Clean
+        </a></li>
+      <li><a href="#mozTocId151306">Checkpoint 12: Write</a></li>
     </ul>
     <h2><a class="mozTocH2" name="mozTocId635864"></a>Checkpoint 1:
       Connect Your Arduino<br>
@@ -164,7 +166,10 @@ href="http://electronicdesign.com/communications/what-s-difference-between-bit-r
       your serial monitor and then upload the code. You should now be
       able to type "On" or "Off" into the serial monitor to turn the
       light on and off. If it works, go ahead and save, add, and commit
-      your code.<br>
+      your code. However, you'll notice that it doesn't always respond.
+      This is because we're directly reading the serial buffer, which is
+      emptied every second. Sometimes it is emptied before the program
+      has a chance to read it. We're going to fix this later.<br>
     </p>
     <p></p>
     <p class="checkpoint">Raise your hand and have Mr. Olinda verify
@@ -181,7 +186,47 @@ href="http://electronicdesign.com/communications/what-s-difference-between-bit-r
     the Arduino is doing in response to your commands.<br>
     <p class="checkpoint">Raise your hand and have Mr. Olinda verify
       this checkpoint.</p>
-    <h2><a class="mozTocH2" name="mozTocId151306"></a>Checkpoint 9:
+    <h2><a class="mozTocH2" name="mozTocId397125"></a>Checkpoint 9:
+      Nested Blocks<br>
+    </h2>
+    <p>Up until now, the Arduino has been unreliable in its response to
+      our commands. We're going to fix that. At the beginning of your <code>void
+        loop()</code> function, add the following:</p>
+    <p><samp>if (Serial.available() &gt; 0) {</samp><samp><br>
+      </samp><samp>&nbsp; String command;</samp><samp><br>
+      </samp><samp>&nbsp; command = Serial.readString();</samp><samp><br>
+      </samp></p>
+    <p><samp>}</samp><samp></samp></p>
+    <p>You'll notice that there is a blank line. In this blank line, cut
+      and paste your if / else block and run <b>Auto Format</b>. Now
+      you have if statements nested inside another if statement. The <a
+        href="https://www.arduino.cc/en/Serial/Available">Serial.available()</a>
+      function checks to see if there is anything in the serial buffer.
+      Once there is, it creates a string variable called command and
+      then stores whatever is in the serial buffer as command.</p>
+    <img alt="" src="images/javaw_2017-01-10_15-05-36.png" height="1061"
+      width="800">
+    <p>Now, find the functions that turn the light on and off and change
+      them so that they are triggered base on the command variable, not
+      directly by the serial buffer.<br>
+    </p>
+    <p>Then add this command underneath your Serial.begin() function in
+      your <code>void setup()</code> function:</p>
+    <p><samp>Serial.setTimeout(10);</samp></p>
+    <p>This will make your Arduino scan the serial buffer every ten
+      milliseconds instead of once a second. Now test it and see if it
+      does what you tell it to reliably. If it works, save, add, and
+      commit your code.<br>
+    </p>
+    <p><i>If you want an extra challenge, see if you can get rid of the
+        nested block. In other words, see if you can change the code so
+        that you don't have an if inside another if. Also, see if you
+        can add an else that responds to the user if they type anything
+        except "On" or "Off" to help them figure out what to do.</i><br>
+    </p>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <h2><a class="mozTocH2" name="mozTocId151306"></a>Checkpoint 10:
       Comment Your Code<br>
     </h2>
     <p>Go back and add comments to each line of code explaining what it
@@ -189,7 +234,7 @@ href="http://electronicdesign.com/communications/what-s-difference-between-bit-r
     </p>
     <p class="checkpoint">Raise your hand and have Mr. Olinda verify
       this checkpoint.</p>
-    <h2><a class="mozTocH2" name="mozTocId941739"></a>Checkpoint 10:
+    <h2><a class="mozTocH2" name="mozTocId941739"></a>Checkpoint 11:
       Clean<br>
     </h2>
     <p>Place your Arduino, USB cable, breadboard, wires, resistor, and
@@ -197,7 +242,7 @@ href="http://electronicdesign.com/communications/what-s-difference-between-bit-r
       your finished code to your remote repository. </p>
     <p class="checkpoint">Raise your hand and have Mr. Olinda verify
       this checkpoint.</p>
-    <h2><a class="mozTocH2" name="mozTocId151306"></a>Checkpoint 11:
+    <h2><a class="mozTocH2" name="mozTocId151306"></a>Checkpoint 12:
       Write</h2>
     <p>Write a short blog post summarizing what you accomplished in this
       lesson. At the end, write some ideas that you would like to try
