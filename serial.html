@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta content="John Olinda" name="author">
+    <title>Serial</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <h1>Serial<br>
+    </h1>
+    <p><a href="https://www.arduino.cc/en/Reference/Serial">Your Arduino
+        has a serial connection</a> for communicating with your computer
+      or with other devices. Usually you'll use the built-in serial port
+      in the USB port, but you can also connect to pins 0 and 1 to
+      communicate over serial. Be careful when doing this since using
+      the wrong voltages can damage your Arduino. During this lesson I
+      link to several more detailed explanations of certain functions.
+      If you're confused about what they do, try reading those before
+      you ask a question.<br>
+    </p>
+    <ul id="mozToc">
+      <!--mozToc h2 1 h3 2 h4 3 h5 4 h6 5-->
+      <li><a href="#mozTocId635864">Checkpoint 1: Connect Your Arduino </a></li>
+      <li><a href="#mozTocId32734">Checkpoint 2: Blink, But Better </a></li>
+      <li><a href="#mozTocId643261">Checkpoint 3: A Little Serial </a></li>
+      <li><a href="#mozTocId91058">Checkpoint 4:
+          Make Friends </a></li>
+      <li><a href="#mozTocId675089">Checkpoint 5: Lines </a></li>
+      <li><a href="#mozTocId372063">Checkpoint 6: You're in Charge</a></li>
+      <li><a href="#mozTocId574868">Checkpoint 7: if / else</a></li>
+      <li><a href="#mozTocId651491">Checkpoint 8: Feedback
+        </a></li>
+      <li><a href="#mozTocId151306">Checkpoint 9: Comment Your Code</a></li>
+      <li><a href="#mozTocId941739">Checkpoint 10: Clean
+        </a></li>
+      <li><a href="#mozTocId151306">Checkpoint 11: Write</a></li>
+    </ul>
+    <h2><a class="mozTocH2" name="mozTocId635864"></a>Checkpoint 1:
+      Connect Your Arduino<br>
+    </h2>
+    <p>Get your supplies and take out only the Arduino and the USB
+      cable. Connect your Arduino to your laptop, open the Arduino IDE,
+      and make sure the correct port is selected.<br>
+    </p>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <h2><a class="mozTocH2" name="mozTocId32734"></a>Checkpoint 2:
+      Blink, But Better<br>
+    </h2>
+    <p>Create a new Arduino program from the file menu and write the
+      code to make pin 13 blink on and off with a 1 second delay. Upload
+      the program to make sure it works and then save the program as <i>serialBlink</i>
+      in your <i>~/projects/arduino/</i> directory. Then add and commit
+      it to version control using a proper commit message.<br>
+    </p>
+    <div align="center">
+      <div align="left"> </div>
+    </div>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <h2><a class="mozTocH2" name="mozTocId643261"></a>Checkpoint 3: A
+      Little Serial<br>
+    </h2>
+    <p>Now you need to add the following code to the <code>void setup()</code>
+      function:</p>
+    <p><samp>Serial.begin(9600);</samp></p>
+    <img alt="" src="images/javaw_2017-01-10_11-30-58.png" height="786"
+      width="800">
+    <p>This activates the serial connection in your USB port and sets
+      the baud rate to 9,600. <a
+href="http://electronicdesign.com/communications/what-s-difference-between-bit-rate-and-baud-rate#4">This
+        link provides a more detailed explanation of baud rates</a>, but
+      it basically means the number of signals that can be sent per
+      second. <br>
+    </p>
+    <p>Add the following code to the void loop() function right after
+      the code that turns the LED on:</p>
+    <p><samp>Serial.println("On");</samp></p>
+    <p>Then add the following code to the void loop() function right
+      after the code that turns the LED off:</p>
+    <p><samp>Serial.println("Off");</samp><br>
+    </p>
+    <img alt="" src="images/javaw_2017-01-10_11-42-46.png" height="786"
+      width="800">
+    <p>Upload the program to your Arduino and press the magnifying glass
+      icon in the upper right corner to open your serial monitor. You
+      should start to see a series of messages appear.</p>
+    <img alt="" src="images/2017-01-10_11-43-55.gif" height="453"
+      width="800">
+    <p>If you do, then save your program, add, and commit. If not, go
+      back and review the instructions to make sure you've done the
+      steps correctly.<br>
+    </p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <h2><a class="mozTocH2" name="mozTocId91058"></a>Checkpoint 4:
+      Make Friends<br>
+    </h2>
+    Use the <a href="https://www.arduino.cc/en/Serial/Println">Serial.println()</a>
+    functions to make your Arduino say something nice to the user when
+    it first boots up. If it works, then save, add, and commit.<br>
+    <p></p>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <h2><a class="mozTocH2" name="mozTocId675089"></a>Checkpoint 5:
+      Lines<br>
+    </h2>
+    Change all the Serial.println() functions to <a
+      href="https://www.arduino.cc/en/Serial/Print">Serial.print()</a>
+    functions and see what happens in the serial monitor when you upload
+    your program. What is the difference between println and print?<br>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <h2><a class="mozTocH2" name="mozTocId372063"></a>Checkpoint 6:
+      You're in Charge<br>
+    </h2>
+    <p>Go ahead and change the Serial.print() functions back to
+      Serial.println(). Now you're going to modify your program to turn
+      the light on and off in response to commands you send via the
+      serial monitor. First, add the following code underneath your
+      friendly message:</p>
+    <p><samp>Serial.println("Send 'On' to turn on the LED.");<br>
+        Serial.println("Send 'Off' to turn off the LED.");</samp></p>
+    <img alt="" src="images/javaw_2017-01-10_12-19-23.png" height="786"
+      width="800">
+    <p>Don't change anything else yet. Open your serial monitor and
+      upload the program. As soon as the program uploads you should see
+      something like this:</p>
+    <img alt="" src="images/javaw_2017-01-10_12-20-47.png" height="453"
+      width="800"><br>
+    <p>If you see this, go ahead and save, add, and commit.<br>
+    </p>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <h2><a class="mozTocH2" name="mozTocId574868"></a>Checkpoint 7: if /
+      else<br>
+    </h2>
+    <p>Now you're going to create an <a
+        href="https://www.arduino.cc/en/Reference/Else">if / else</a>
+      block in your <code>void loop()</code> function that will control
+      the lights. An if / else block tells the Arduino to do one of the
+      things in the block if certain conditions are met. If they're not
+      met, the Arduino will simply loop around and try again. Add the
+      following lines to your code:</p>
+    <p><samp>if (Serial.readString() == "On") {</samp><samp></samp><samp></samp><samp><br>
+      </samp><samp>&nbsp; digitalWrite(13, HIGH);</samp><samp><br>
+      </samp><samp>}</samp><samp><br>
+      </samp><samp>else if (Serial.readString() == "Off") {</samp><samp></samp><samp><br>
+      </samp><samp>&nbsp; digitalWrite(13, LOW);</samp><samp><br>
+      </samp><samp>}</samp><br>
+    </p>
+    <img alt="" src="images/javaw_2017-01-10_12-27-14.png" height="786"
+      width="800">
+    <p>The <a href="https://www.arduino.cc/en/Serial/ReadString">Serial.readString()</a>
+      function waits for you to send something from the computer to the
+      Arduino via the serial connection and then reads it as if it is a
+      group of text characters. If you were sending only integers or
+      floating point values, you would use a different function. Open
+      your serial monitor and then upload the code. You should now be
+      able to type "On" or "Off" into the serial monitor to turn the
+      light on and off. If it works, go ahead and save, add, and commit
+      your code.<br>
+    </p>
+    <p></p>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <h2><a class="mozTocH2" name="mozTocId651491"></a>Checkpoint 8:
+      Feedback<br>
+    </h2>
+    Now that your light turns on and off, let's add some feedback for
+    the user other than the light. Even though the light provides
+    feedback, it's possible that the light could be defective. Having
+    another way of knowing whether your code is working helps you to
+    find problems with your software and hardware. I want you to add
+    Serial.println() functions in your if / else block to tell you what
+    the Arduino is doing in response to your commands.<br>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <h2><a class="mozTocH2" name="mozTocId151306"></a>Checkpoint 9:
+      Comment Your Code<br>
+    </h2>
+    <p>Go back and add comments to each line of code explaining what it
+      does. Then save, add, and commit your code.<br>
+    </p>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <h2><a class="mozTocH2" name="mozTocId941739"></a>Checkpoint 10:
+      Clean<br>
+    </h2>
+    <p>Place your Arduino, USB cable, breadboard, wires, resistor, and
+      LED inside your bag and place the bag on the back table. Then push
+      your finished code to your remote repository. </p>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <h2><a class="mozTocH2" name="mozTocId151306"></a>Checkpoint 11:
+      Write</h2>
+    <p>Write a short blog post summarizing what you accomplished in this
+      lesson. At the end, write some ideas that you would like to try
+      with your Arduino. Your post should be two paragraphs, three to
+      five sentences each.</p>
+    <p class="checkpoint">Raise your hand and have Mr. Olinda verify
+      this checkpoint.</p>
+    <p> </p>
+    <p> </p>
+    <p> </p>
+  </body>
+</html>
